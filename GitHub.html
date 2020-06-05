@@ -1,1 +1,89 @@
-GitHub
+<html>
+
+  <head>
+  
+    <title>Dates</title>
+    <style>
+      h1 {
+        color: purple; 
+        font-weight: bold;
+        text-align: center;
+        font-size: 30px; 
+      }
+
+      h2 {
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+      }
+      form{
+          text-align: center;
+      }
+      p{
+          text-align: center; 
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Current City</h1>
+    <h2>Today</h2>
+
+    <form id="search-form">
+        <input type="text" 
+        id="search-text-input" 
+        placeholder="Search for a city"
+        autocomplete="off"
+        autofocus="on">
+        <input type="submit" value="Search">
+
+
+</form>
+
+    <script>
+      let now = new Date();
+
+      let h2 = document.querySelector("h2");
+
+      let date = now.getDate();
+      let hours = now.getHours();
+      let minutes = now.getMinutes();
+      let year = now.getFullYear();
+
+      let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      let day = days[now.getDay()];
+
+      let months = [
+        "Jan",
+        "Feb",
+        "March",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ];
+      let month = months[now.getMonth()];
+
+      h2.innerHTML = `${day} ${month} ${date}, ${hours}:${minutes}, ${year}`;
+    
+      
+
+
+function search(event){
+    event.preventDefault(); 
+    let searchInput = document.querySelector("#search-text-input");
+    console.log(searchInput.value);
+    let h1 = document.querySelector("h1"); 
+h1.innerHTML = searchInput.value;
+    }
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
+
+    </script>
+  </body>
+</html>
